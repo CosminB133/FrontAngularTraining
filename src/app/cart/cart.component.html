@@ -1,0 +1,26 @@
+<a routerLink="/">Index</a>
+
+<app-product-cart
+  *ngFor="let product of products; let i = index"
+  [product]="product"
+  [index]="i"></app-product-cart>
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+  <div class="form-group">
+    <label for="name-cart">Name :</label>
+    <input type="text" class="form-control" name="name" id="name-cart" ngModel required>
+  </div>
+
+  <div class="form-group">
+    <label for="contact-cart">Contact details :</label>
+    <input type="text" class="form-control" name="contact" id="contact-cart" ngModel required>
+  </div>
+
+  <div class="form-group">
+    <label for="comments-cart">Comments :</label>
+    <input type="text" class="form-control" name="comments" id="comments-cart" ngModel required>
+  </div>
+
+  <button class="btn btn-success">Submit</button>
+</form>
+

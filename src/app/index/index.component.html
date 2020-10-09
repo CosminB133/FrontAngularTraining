@@ -1,0 +1,8 @@
+<div>
+  <a routerLink="/cart">Cart</a>
+  <app-product-index
+    *ngFor="let product of products; let i = index"
+    [product]="product"
+    [index]="i">
+  </app-product-index>
+</div>
