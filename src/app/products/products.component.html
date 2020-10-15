@@ -1,0 +1,7 @@
+<app-products-item
+  *ngFor="let product of products; let i = index"
+  [product]="product"
+  [index]="i"
+  (deletedItem)="onDelete($event)">
+</app-products-item>
+<button class="btn btn-primary" [routerLink]="['new']">New Product</button>

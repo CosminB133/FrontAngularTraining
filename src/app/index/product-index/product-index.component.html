@@ -1,6 +1,6 @@
-<a>
+<div class="row">
   <div class="col-md-3">
-    <img src="#" alt="product image" class="img-fluid"
+    <img src="http://127.0.0.1:8000/storage/img/{{ product.id }}" alt="product image" class="img-fluid"
          style="max-height: 150px; margin-right: 5px">
   </div>
   <div class="col-md-6">
@@ -10,6 +10,5 @@
   </div>
   <div class="col-md-3">
     <button class="btn btn-primary" (click)="onAddItem()">Add</button>
-    <button class="btn btn-success" (click)="onShowItem()">Show</button>
   </div>
-</a>
+</div>

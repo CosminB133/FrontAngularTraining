@@ -16,13 +16,10 @@ export class ProductIndexComponent implements OnInit {
 
   constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   onAddItem() {
-    this.cartService.addItem(this.index);
+    this.cartService.addItem(this.product.id);
   }
 
-  onShowItem() {
-    ///////
-  }
 }

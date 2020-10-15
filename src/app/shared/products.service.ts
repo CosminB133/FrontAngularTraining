@@ -8,12 +8,40 @@ import {Subject} from 'rxjs';
 })
 export class ProductsService {
 
-  private productsCart: Product[] = [];
-  private productsIndex: Product[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllProducts() {
     return this.http.get<{ data: Product[] }>('http://127.0.0.1:8000/products');
   }
 
+  deleteProduct(id: string) {
+    return this.http.delete<{ data: Product[] }>('http://127.0.0.1:8000/products/' + id);
+  }
+
+  addProduct(title: string, description, price: string, img: File) {
+    let updatedData = new FormData();
+    updatedData.append('title', title);
+    updatedData.append('description', description);
+    updatedData.append('price', price);
+    updatedData.append('img', img, img.name);
+
+    return this.http.post('http://127.0.0.1:8000/products', updatedData);
+  }
+
+  getProduct(id: string) {
+    return this.http.get<{data: any}>('http://127.0.0.1:8000/products/' + id);
+  }
+
+  updateProduct(id:string, title: string, description, price: string, img: File) {
+    let updatedData = new FormData();
+    updatedData.append('title', title);
+    updatedData.append('description', description);
+    updatedData.append('price', price);
+    updatedData.append('_method', 'PUT');
+    if (img){
+      updatedData.append('img', img, img.name);
+    }
+
+    return this.http.post('http://127.0.0.1:8000/products/' + id, updatedData);
+  }
 }

@@ -1,0 +1,35 @@
+<h1>Edit Product</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" class="form-control" required [ngModel]="title" #titleReference="ngModel">
+  </div>
+
+  <span class="help-block" *ngIf="!titleReference.valid && titleReference.touched">Title is required field.</span>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" cols="30" rows="10"
+              class="form-control"  [ngModel]="description" required #descriptionReference="ngModel"></textarea>
+  </div>
+
+  <span class="help-block" *ngIf="!descriptionReference.valid && descriptionReference.touched">Description is required field.</span>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" name="price" id="price" class="form-control" [ngModel]="price" #priceReference="ngModel" required pattern="^\d+(\.\d{1,2})?$">
+  </div>
+
+  <span class="help-block" *ngIf="!priceReference.valid && priceReference.touched">Please enter a valid price</span>
+
+  <img src="http://127.0.0.1:8000/storage/img/{{ id }}" class="img-fluid" alt="product image">
+
+  <div class="form-group">
+    <label for="img">Image :</label>
+    <input type="file" name="img" id="img" class="form-control-file" (change)="onFileChange($event.target.files[0])">
+  </div>
+
+  <button type="submit" class="btn btn-primary"  [disabled]="!f.valid">Update</button>
+
+</form>
+

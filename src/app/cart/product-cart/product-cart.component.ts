@@ -14,10 +14,11 @@ export class ProductCartComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
+
   }
 
   onRemoveItem() {
-    this.cartService.removeItem(this.index);
+    this.cartService.removeItem(this.product.id);
   }
 }
 

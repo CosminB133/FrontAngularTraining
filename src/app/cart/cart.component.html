@@ -1,26 +1,52 @@
 <a routerLink="/">Index</a>
 
 <app-product-cart
-  *ngFor="let product of products; let i = index"
-  [product]="product"
-  [index]="i"></app-product-cart>
+  *ngFor="let product of products"
+  [product]="product">
+</app-product-cart>
 
-<form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+<form (ngSubmit)="onSubmit(f.value)" #f="ngForm" >
   <div class="form-group">
     <label for="name-cart">Name :</label>
-    <input type="text" class="form-control" name="name" id="name-cart" ngModel required>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      id="name-cart"
+      ngModel
+      required
+      #name="ngModel">
   </div>
 
+  <span class="help-block" *ngIf="!name.valid && name.touched"> Name is required. </span>
+
   <div class="form-group">
-    <label for="contact-cart">Contact details :</label>
-    <input type="text" class="form-control" name="contact" id="contact-cart" ngModel required>
+    <label for="cart">Contact details :</label>
+    <input
+      type="text"
+      class="form-control"
+      name="contact"
+      id="cart"
+      ngModel
+      required
+      #contact="ngModel">
   </div>
+  <span class="help-block" *ngIf="!contact.valid && contact.touched"> Please enter the contact details. </span>
 
   <div class="form-group">
     <label for="comments-cart">Comments :</label>
-    <input type="text" class="form-control" name="comments" id="comments-cart" ngModel required>
+    <input
+      type="text"
+      class="form-control"
+      name="comments"
+      id="comments-cart"
+      ngModel
+      required
+      #comments="ngModel">
   </div>
 
-  <button class="btn btn-success">Submit</button>
+  <span class="help-block" *ngIf="!comments.valid && comments.touched"> Comments are required. </span>
+
+  <button type="submit" class="btn btn-success" [disabled]="!f.valid || !products.length">Submit</button>
 </form>
 

@@ -9,6 +9,7 @@
     <p>{{ product.price }}</p>
   </div>
   <div class="col-md-3">
-    <button class="btn btn-danger" (click)="onRemoveItem()">Remove from cart</button>
+    <button class="btn btn-success" [routerLink]="product.id">Edit</button>
+    <button class="btn btn-danger" (click)="onDelete()">Delete</button>
   </div>
 </div>

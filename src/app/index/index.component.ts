@@ -17,13 +17,14 @@ export class IndexComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.subscription = this.cartService.indexChanged.subscribe(
-      (products) => {
-        this.products = products
-      }
-    );
-
-    this.products = this.cartService.getIndexProducts();
+    this.cartService.getIndexProducts().subscribe(response =>{
+      this.products = response['data'];
+    });
+    this.subscription = this.cartService.cartChanged.subscribe(() => {
+      this.cartService.getIndexProducts().subscribe(response =>{
+        this.products = response['data'];
+      });
+    });
   }
 
   ngOnDestroy() {
