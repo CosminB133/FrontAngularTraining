@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +16,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(input) {
-    this.http.post<{access_token: string}>('http://127.0.0.1:8000/login',{
+    this.http.post<{ access_token: string }>('http://127.0.0.1:8000/login',{
       email: input.email,
       password: input.password
     }).subscribe(
       response => {
-        console.log(response);
         localStorage.setItem('jwt', response.access_token);
-        this.router.navigate(['/products'])
+        this.router.navigate(['/products']);
       },
       () => this.error = true);
   }

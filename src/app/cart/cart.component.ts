@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit, OnDestroy {
-
   products: Product[] = [];
   subscription: Subscription;
 
@@ -46,8 +45,8 @@ export class CartComponent implements OnInit, OnDestroy {
       comments: input.comments,
       products: JSON.parse(localStorage.getItem('cart'))
     }).subscribe((response) => {
-      localStorage.removeItem('cart')
-      this.router.navigate(['/'])
+      localStorage.removeItem('cart');
+      this.router.navigate(['/']);
     });
   }
 }

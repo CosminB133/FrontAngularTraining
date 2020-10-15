@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ProductsService} from '../../shared/products.service';
-import {Product} from '../../shared/product.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from '../../shared/products.service';
 
 @Component({
   selector: 'app-products-edit',
@@ -32,9 +31,9 @@ export class ProductsEditComponent implements OnInit {
   }
 
   onSubmit(input: any) {
-    this.productsService.updateProduct(this.id, input.title, input.description, input.price, this.selectedFile).subscribe(response => {
-      this.router.navigate(['/products'])
-    });
+    this.productsService.updateProduct(this.id, input.title, input.description, input.price, this.selectedFile).subscribe(
+      () => this.router.navigate(['/products'])
+    );
   }
 
   onFileChange(file: any) {
