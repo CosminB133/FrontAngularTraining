@@ -19,7 +19,7 @@ export class CartService {
 
     console.log(params)
 
-    return this.http.get('http://127.0.0.1:8000/', { params: params });
+    return this.http.get<Product[]>('http://127.0.0.1:8000/', { params: params });
   }
 
   getCartProducts(){
@@ -28,7 +28,7 @@ export class CartService {
     let params = new HttpParams();
     params = params.append('cart', cart.join(','));
 
-    return this.http.get('http://127.0.0.1:8000/cart', { params: params });
+    return this.http.get<Product[]>('http://127.0.0.1:8000/cart', { params: params });
   }
 
   removeItem(id: string) {

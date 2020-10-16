@@ -25,12 +25,12 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subscription = this.cartService.cartChanged.subscribe(
       (response) => {
         this.cartService.getCartProducts().subscribe(response => {
-          this.products = response['data'];
+          this.products = response;
         })
       }
     );
     this.cartService.getCartProducts().subscribe(response => {
-      this.products = response['data'];
+      this.products = response;
     })
   }
 

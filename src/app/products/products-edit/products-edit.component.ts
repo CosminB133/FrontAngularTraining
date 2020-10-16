@@ -9,23 +9,23 @@ import { ProductsService } from '../../shared/products.service';
 })
 export class ProductsEditComponent implements OnInit {
   id: string;
-  price: string = "ceva";
+  price: string;
   title: string;
   description: string;
   selectedFile: File;
 
   constructor(private route: ActivatedRoute,
               private productsService: ProductsService,
-              private router: Router) { }
+              private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params) => {
         this.id = params.id;
         this.productsService.getProduct(this.id).subscribe(response => {
-          this.price = response.data.price;
-          this.title = response.data.title;
-          this.description = response.data.description;
+          this.price = response.price;
+          this.title = response.title;
+          this.description = response.description;
         });
       });
   }

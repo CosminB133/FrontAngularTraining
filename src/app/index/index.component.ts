@@ -18,11 +18,12 @@ export class IndexComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cartService.getIndexProducts().subscribe(response =>{
-      this.products = response['data'];
+      this.products = response;
     });
     this.subscription = this.cartService.cartChanged.subscribe(() => {
       this.cartService.getIndexProducts().subscribe(response =>{
-        this.products = response['data'];
+        console.log('ceva')
+        this.products = response;
       });
     });
   }

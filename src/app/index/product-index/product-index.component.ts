@@ -19,7 +19,7 @@ export class ProductIndexComponent implements OnInit {
   ngOnInit() {}
 
   onAddItem() {
-    this.cartService.addItem(this.product.id);
+    this.cartService.addItem(this.product._id);
   }
 
 }

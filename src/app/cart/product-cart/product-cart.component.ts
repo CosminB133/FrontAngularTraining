@@ -11,14 +11,13 @@ export class ProductCartComponent implements OnInit {
 
   @Input() product: Product;
   @Input() index: number;
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   onRemoveItem() {
-    this.cartService.removeItem(this.product.id);
+    this.cartService.removeItem(this.product._id);
   }
 }
+
 

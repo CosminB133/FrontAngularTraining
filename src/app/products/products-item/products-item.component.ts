@@ -18,7 +18,7 @@ export class ProductsItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onDelete() {
-    this.productsService.deleteProduct(this.product.id).subscribe(response => {
+    this.productsService.deleteProduct(this.product._id).subscribe(response => {
       this.deletedItem.emit(this.index);
     })
   }

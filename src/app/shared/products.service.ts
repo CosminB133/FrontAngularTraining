@@ -11,7 +11,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getAllProducts() {
-    return this.http.get<{ data: Product[] }>('http://127.0.0.1:8000/products');
+    return this.http.get<Product[]>('http://127.0.0.1:8000/products');
   }
 
   deleteProduct(id: string) {
@@ -29,7 +29,7 @@ export class ProductsService {
   }
 
   getProduct(id: string) {
-    return this.http.get<{data: any}>('http://127.0.0.1:8000/products/' + id);
+    return this.http.get<Product>('http://127.0.0.1:8000/products/' + id);
   }
 
   updateProduct(id:string, title: string, description, price: string, img: File) {
@@ -37,11 +37,10 @@ export class ProductsService {
     updatedData.append('title', title);
     updatedData.append('description', description);
     updatedData.append('price', price);
-    updatedData.append('_method', 'PUT');
     if (img){
       updatedData.append('img', img, img.name);
     }
 
-    return this.http.post('http://127.0.0.1:8000/products/' + id, updatedData);
+    return this.http.patch('http://127.0.0.1:8000/products/' + id, updatedData);
   }
 }

@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getAllProducts().subscribe(
-      response => this.products = response.data ,
+      response => this.products = response ,
       error => this.router.navigate(['/login']));
   }
 
